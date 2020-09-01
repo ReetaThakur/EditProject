@@ -26,4 +26,4 @@
 
 </RelativeLayout>
 
-<!--  android:layout_toEndOf will place the view to the end/right of the specified view -->
+    <!--  android:layout_toEndOf will place the view to the end/right of the specified view -->
