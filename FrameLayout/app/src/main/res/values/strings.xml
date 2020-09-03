@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Frame Layout</string>
+    <string name="text_username">Enter Username</string>
+    <string name="text_click">Click</string>
+</resources>
