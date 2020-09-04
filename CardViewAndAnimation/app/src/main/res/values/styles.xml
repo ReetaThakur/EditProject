@@ -7,11 +7,4 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-<style name="loginEditTextStyle">
-    <item name="android:layout_margin">@dimen/dp_20</item>
-    <item name="backgroundTint">@android:color/black</item>
-    <item name="android:textColorHint">@android:color/black</item>
-    <item name="android:layout_height">wrap_content</item>
-    <item name="android:layout_width">match_parent</item>
-</style>
 </resources>
