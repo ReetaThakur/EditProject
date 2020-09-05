@@ -13,9 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public class ExplicitIntentActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mBtnShare;
-    private Button mBtnOpenLink;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +21,8 @@ public class ExplicitIntentActivity extends AppCompatActivity implements View.On
     }
 
     private void initializeViewsAndListeners() {
-        mBtnOpenLink = findViewById(R.id.btnOpenLink);
-        mBtnShare = findViewById(R.id.btnShare);
+        Button mBtnOpenLink = findViewById(R.id.btnOpenLink);
+        Button mBtnShare = findViewById(R.id.btnShare);
         mBtnShare.setOnClickListener(this);
         mBtnOpenLink.setOnClickListener(this);
     }
