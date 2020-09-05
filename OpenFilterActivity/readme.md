@@ -5,4 +5,4 @@ Steps to run the app
 
 1. Install the app
 2. Click the button inside the app
-3. OpenFilterActivity from intentfilters app will open (because of intent action)
+3. `CustomIntentActivity` from intentfilters app will open (because of intent action)
