@@ -1,6 +1,6 @@
 This app is just a demo application and there is no operation performed inside the app. 
 
-The app manifest file has an Activity `OpenFiltersActivity` and it looks like below
+The app manifest file has an Activity `CustomIntentActivity` and it looks like below
 
 ```
 <activity android:name=".CustomIntentActivity">
