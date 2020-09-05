@@ -21,40 +21,40 @@ public class LifeCycleAwareActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.insta);
         initViewsAndListeners();
     }
 
     private void initViewsAndListeners() {
-        mBtnPlay = findViewById(R.id.btnPlay);
-        mBtnStop = findViewById(R.id.btnStop);
-        mediaPlayer = MediaPlayer.create(this, R.raw.shape_of_you);
-        mBtnStop.setOnClickListener(this);
-        mBtnPlay.setOnClickListener(this);
+//        mBtnPlay = findViewById(R.id.btnPlay);
+//        mBtnStop = findViewById(R.id.btnStop);
+//        mediaPlayer = MediaPlayer.create(this, R.raw.shape_of_you);
+//        mBtnStop.setOnClickListener(this);
+//        mBtnPlay.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.btnPlay) {
-            mediaPlayer.start();
-            isPlayClicked = true;
-        } else if (view.getId() == R.id.btnStop && mediaPlayer.isPlaying()) {
-            mediaPlayer.pause();
-            isPlayClicked = false;
-        }
+//        if (view.getId() == R.id.btnPlay) {
+//            mediaPlayer.start();
+//            isPlayClicked = true;
+//        } else if (view.getId() == R.id.btnStop && mediaPlayer.isPlaying()) {
+//            mediaPlayer.pause();
+//            isPlayClicked = false;
+//        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (isPlayClicked) {
-            mediaPlayer.start();
-        }
+//        if (isPlayClicked) {
+//            mediaPlayer.start();
+//        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        mediaPlayer.pause();
+//        mediaPlayer.pause();
     }
 }
