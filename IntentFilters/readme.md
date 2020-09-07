@@ -12,4 +12,4 @@ The app manifest file has an Activity `CustomIntentActivity` and it looks like b
         </activity>
  ```
  
- When you run the `OpenIntentFiltersActivity` app and click the button inside the app , this `CustomIntentActivity` will open because of the same intent action
+ When you run the `OpenFilterActivity` app (install the app from repo) and click the button inside the app , this `CustomIntentActivity` will open because of the same intent action
