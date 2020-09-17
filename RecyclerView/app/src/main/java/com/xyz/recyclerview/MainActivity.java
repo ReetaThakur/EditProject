@@ -1,6 +1,7 @@
 package com.xyz.recyclerview;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ItemClickListener {
 
     private RecyclerView recyclerView;
     private List<Menu> menuList;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setRecyclerAdapter() {
-        MenuAdapter menuAdapter = new MenuAdapter(menuList);
+        MenuAdapter menuAdapter = new MenuAdapter(menuList, this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         /*
@@ -35,30 +36,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void buildRecyclerData() {
         menuList = new ArrayList<>();
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Idli Vada", 40, "Anand Bhavan"));
-        menuList.add(new Menu("Paneer Masala Dosa", 90, "A2B"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Idli Vada", 40, "Anand Bhavan"));
-        menuList.add(new Menu("Paneer Masala Dosa", 90, "A2B"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-        menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
+        for (int i = 0; i < 100; i++) {
+            menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
+        }
+    }
 
-        /*
-        comment the lines from 35 to 52 and uncomment this for loop
-         */
-//        for (int i = 0; i < 100;i++){
-//            menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
-//        }
+    @Override
+    public void onItemClicked(Menu menu, int position) {
+        Toast.makeText(this, "Item clicked at position " + (position + 1), Toast.LENGTH_SHORT).show();
     }
 }
