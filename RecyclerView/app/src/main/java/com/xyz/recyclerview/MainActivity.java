@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements ItemClickListener {
 
     private RecyclerView recyclerView;
-    private List<Menu> menuList;
+    private List<Animal> menuList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +27,10 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
     }
 
     private void setRecyclerAdapter() {
-        MenuAdapter menuAdapter = new MenuAdapter(menuList, this);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        AnimalAdapter menuAdapter = new AnimalAdapter(menuList, this);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+//        GridLayoutManager layoutManager = new GridLayoutManager(this, 4);
+        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(4, LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         /*
         Pass the data to the adapter class
@@ -37,12 +41,12 @@ public class MainActivity extends AppCompatActivity implements ItemClickListener
     private void buildRecyclerData() {
         menuList = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            menuList.add(new Menu("Masala Dosa", 60, "Anand Bhavan"));
+
         }
     }
 
     @Override
-    public void onItemClicked(Menu menu, int position) {
+    public void onItemClicked(Animal menu, int position) {
         Toast.makeText(this, "Item clicked at position " + (position + 1), Toast.LENGTH_SHORT).show();
     }
 }
