@@ -23,24 +23,52 @@ public class MainActivity extends AppCompatActivity {
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
+            HttpURLConnection urlConnection = null;
             try {
                 URL url = new URL(API_URL);
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                /*
+                Open the connection and connect to the server url
+                 */
+                urlConnection = (HttpURLConnection) url.openConnection();
+                /*
+                This method gives stream of data from the server
+                 */
                 InputStream inputStream = urlConnection.getInputStream();
+                /*
+                This method is used to read the stream of data received from the server.
+                 */
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
 
+                /*
+                inputStreamReader.read() will give one element at a time , so data will have the first element
+                 */
                 int data = inputStreamReader.read();
-                StringBuilder stringBuilder = new StringBuilder();
+                /*
+                StringBuffer class is used to to build the json response in the string format. StringBuffer
+                class is mutable and does not create new objects every time as we append the data unlike strings
+                 */
+                StringBuffer stringBuffer = new StringBuffer();
+
+                /*
+                when data is -1, that means we have reached the end of response
+                 */
                 while (data != -1) {
+                    /*
+                    the data will be in byte format, cast it to char
+                     */
                     char responseChar = (char) data;
-                    stringBuilder.append(responseChar);
+                    stringBuffer.append(responseChar);
                     data = inputStreamReader.read();
                 }
-                Log.d("Lloyd", stringBuilder.toString());
+                Log.d("Lloyd", stringBuffer.toString());
 
-                buildResponseModel(stringBuilder);
+                buildResponseModel(stringBuffer);
             } catch (Exception e) {
                 e.printStackTrace();
+            } finally {
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
             }
         }
     };
@@ -58,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         mBtnGetRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                API_URL ="https://jsonplaceholder.typicode.com/posts/4";
+                API_URL = "https://jsonplaceholder.typicode.com/posts/4";
                 startBackGroundThread();
             }
         });
@@ -70,17 +98,31 @@ public class MainActivity extends AppCompatActivity {
         thread.start();
     }
 
-    private void buildResponseModel(StringBuilder stringBuilder) {
+    /**
+     * This method is used to build the JSONObject from the string and to extract all the keys and build the POJO class.
+     * Please note that this method is called from runnable so this will be running inside a background thread.
+     */
+    private void buildResponseModel(StringBuffer stringBuffer) {
         try {
-            JSONObject jsonObject = new JSONObject(stringBuilder.toString());
+            /*
+            Build a JSON object from the received string
+             */
+            JSONObject jsonObject = new JSONObject(stringBuffer.toString());
             String title = jsonObject.getString("title");
             String body = jsonObject.getString("body");
             int userId = jsonObject.getInt("userId");
             int id = jsonObject.getInt("id");
             final Response response = new Response(userId, id, title, body);
+            /*
+            After the response class  is built, We need to update the UI so we have to communicate with the UI thread
+            and display the data in the main thread.
+             */
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    /*
+                    This method will be called in the main thread
+                     */
                     mTvTitle.setText(response.getTitle());
                 }
             });
