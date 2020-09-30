@@ -1,4 +1,4 @@
-package com.xyz.networkcalls;
+package com.xyz.networkcalls.model;
 
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;

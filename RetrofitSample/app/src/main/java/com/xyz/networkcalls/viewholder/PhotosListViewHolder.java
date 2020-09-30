@@ -1,4 +1,4 @@
-package com.xyz.networkcalls;
+package com.xyz.networkcalls.viewholder;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -8,12 +8,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.xyz.networkcalls.R;
+import com.xyz.networkcalls.model.PhotosResponse;
 
-public class GeneralViewHolder extends RecyclerView.ViewHolder {
+public class PhotosListViewHolder extends RecyclerView.ViewHolder {
     private TextView mTvTitle;
     private ImageView mIvThumbnail;
 
-    public GeneralViewHolder(@NonNull View itemView) {
+    public PhotosListViewHolder(@NonNull View itemView) {
         super(itemView);
         initViews(itemView);
     }

@@ -1,4 +1,4 @@
-package com.xyz.networkcalls;
+package com.xyz.networkcalls.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,25 +7,29 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.xyz.networkcalls.viewholder.PhotosListViewHolder;
+import com.xyz.networkcalls.R;
+import com.xyz.networkcalls.model.PhotosResponse;
+
 import java.util.List;
 
-public class GeneralAdapter extends RecyclerView.Adapter<GeneralViewHolder> {
+public class PhotosListAdapter extends RecyclerView.Adapter<PhotosListViewHolder> {
 
     private List<PhotosResponse> responseList;
 
-    public GeneralAdapter(List<PhotosResponse> responseList) {
+    public PhotosListAdapter(List<PhotosResponse> responseList) {
         this.responseList = responseList;
     }
 
     @NonNull
     @Override
-    public GeneralViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PhotosListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
-        return new GeneralViewHolder(view);
+        return new PhotosListViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GeneralViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PhotosListViewHolder holder, int position) {
         PhotosResponse response = responseList.get(position);
         holder.setData(response);
     }
