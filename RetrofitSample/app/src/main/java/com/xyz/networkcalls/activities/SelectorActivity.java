@@ -41,6 +41,8 @@ public class SelectorActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
             case R.id.btnPostRequest:
+                Intent registerIntent = new Intent(SelectorActivity.this, RegisterActivity.class);
+                startActivity(registerIntent);
                 break;
         }
     }
