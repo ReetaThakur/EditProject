@@ -27,6 +27,8 @@ public class PhotosListViewHolder extends RecyclerView.ViewHolder {
 
     public void setData(PhotosResponse response) {
         mTvTitle.setText(response.getTitle());
-        Glide.with(mIvThumbnail).load(response.getThumbnailUrl()).centerCrop().into(mIvThumbnail);
+        Glide.with(mIvThumbnail.getContext())
+                .load("https://avatars0.githubusercontent.com/u/1687294?v=4")
+                .into(mIvThumbnail);
     }
 }

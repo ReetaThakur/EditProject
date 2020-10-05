@@ -48,6 +48,17 @@ public class PhotosResponse implements Serializable {
 		return title;
 	}
 
+	@Override
+	public String toString() {
+		return "PhotosResponse{" +
+				"albumId=" + albumId +
+				", id=" + id +
+				", title='" + title + '\'' +
+				", url='" + url + '\'' +
+				", thumbnailUrl='" + thumbnailUrl + '\'' +
+				'}';
+	}
+
 	public void setUrl(String url){
 		this.url = url;
 	}

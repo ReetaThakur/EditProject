@@ -50,7 +50,7 @@ public class PostListActivity extends AppCompatActivity {
               /*
         Initialize the API service calls which has all the Api calls
          */
-        ApiService apiService = Network.getRetrofitInstance().create(ApiService.class);
+        ApiService apiService = Network.getRetrofitInstance(this).create(ApiService.class);
         /*
         Make an API call and save the response in call object
          */

@@ -20,6 +20,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * This class demonstrates a POST request where we are positing username and password to the server and \
+ * on success/failure we display a toast message
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText mEtUserName;
@@ -38,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         mEtUserName = findViewById(R.id.etUsername);
         mEtPassword = findViewById(R.id.etPassword);
         mBtnRegister = findViewById(R.id.btnRegister);
-        apiService = Network.getRetrofitInstance().create(ApiService.class);
+        apiService = Network.getRetrofitInstance(this).create(ApiService.class);
         mBtnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

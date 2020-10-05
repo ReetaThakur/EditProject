@@ -22,6 +22,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * This class is used to fetch List  of photos from API and display the fetched list in recycler view
@@ -63,7 +64,7 @@ public class PhotosListActivity extends AppCompatActivity {
               /*
         Initialize the API service calls which has all the Api calls
          */
-        ApiService apiService = Network.getRetrofitInstance().create(ApiService.class);
+        ApiService apiService = Network.getRetrofitInstance(this).create(ApiService.class);
         /*
         Make an API call and save the response in call object
          */
@@ -74,7 +75,7 @@ public class PhotosListActivity extends AppCompatActivity {
          */
         call.enqueue(new Callback<List<PhotosResponse>>() {
             @Override
-            public void onResponse(@NonNull Call<List<PhotosResponse>> call, @NonNull retrofit2.Response<List<PhotosResponse>> response) {
+            public void onResponse(@NonNull Call<List<PhotosResponse>> call, @NonNull Response<List<PhotosResponse>> response) {
                 /*
                 This method is invoked if the response is successful
                  */
