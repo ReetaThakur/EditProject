@@ -39,6 +39,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fragmentManager = getSupportFragmentManager();
         mBtnPopInclusive.setOnClickListener(this);
         mBtnPopFragment.setOnClickListener(this);
+        /*
+         * This Listener is called every time whenever backstack changes . i.e when a fragment is added to back stack/ fragment is popped from stack.
+         */
+        fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+            @Override
+            public void onBackStackChanged() {
+                Log.d(TAG, "back stack changed ");
+                int backCount = fragmentManager.getBackStackEntryCount();
+            }
+        });
     }
 
     @Override
@@ -83,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Check if FragmentB is present in the container using the TAG, if present then remove it.
          */
         FragmentC fragmentC = new FragmentC();
-        fragmentManager.beginTransaction().add(R.id.flContainer, fragmentC, "FragmentC").addToBackStack("C").commit();
+        fragmentManager.beginTransaction().add(R.id.flContainer, fragmentC, "FragmentC").commit();
 
     }
 
@@ -128,6 +138,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
         printLogs("onDestroy");
     }
+
 
     private void printLogs(String message) {
         Log.d(TAG, message);
