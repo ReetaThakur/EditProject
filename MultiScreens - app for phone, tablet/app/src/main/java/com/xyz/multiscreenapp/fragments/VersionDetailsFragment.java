@@ -12,6 +12,10 @@ import androidx.fragment.app.Fragment;
 
 import com.xyz.multiscreenapp.R;
 
+/**
+ * @author Lloyd Dcosta
+ * This fragment displays the data of the Android version that the user has clicked
+ */
 public class VersionDetailsFragment extends Fragment {
 
     private TextView mTvVersionName;

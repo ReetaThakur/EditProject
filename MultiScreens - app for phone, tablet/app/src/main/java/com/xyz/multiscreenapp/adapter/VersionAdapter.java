@@ -14,6 +14,10 @@ import com.xyz.multiscreenapp.viewholder.VersionViewHolder;
 
 import java.util.List;
 
+/**
+ * @author Lloyd Dcosta
+ * This is an Adapter class which has the version model data
+ */
 public class VersionAdapter extends RecyclerView.Adapter<VersionViewHolder> {
     private List<VersionModel> versionModelList;
     private ItemClickListener itemClickListener;

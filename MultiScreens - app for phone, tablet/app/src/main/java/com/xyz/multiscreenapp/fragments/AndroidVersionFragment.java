@@ -12,15 +12,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.xyz.multiscreenapp.listeners.FragmentCommunicationListener;
-import com.xyz.multiscreenapp.listeners.ItemClickListener;
 import com.xyz.multiscreenapp.R;
 import com.xyz.multiscreenapp.adapter.VersionAdapter;
+import com.xyz.multiscreenapp.listeners.FragmentCommunicationListener;
+import com.xyz.multiscreenapp.listeners.ItemClickListener;
 import com.xyz.multiscreenapp.model.VersionModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Lloyd Dcosta
+ * this fragment is used to display the android version names in a recycler view
+ */
 public class AndroidVersionFragment extends Fragment implements ItemClickListener {
 
     private RecyclerView mRecyclerView;
@@ -73,13 +77,26 @@ public class AndroidVersionFragment extends Fragment implements ItemClickListene
         versionModelList.add(new VersionModel("Oreo", "Released in the year Sept 15, 2009"));
     }
 
+    /**
+     * This listener is invoked when the recycler view item is clicked
+     *
+     * @param versionModel that data of the item that has been clicked by the user
+     * @param position     position of the item clicked
+     */
     @Override
     public void onRecyclerViewItemClicked(VersionModel versionModel, int position) {
+        /*
+        Once the item is clicked notify the activity that the item has been clicked and open
+        VersionDetailsFragment
+         */
         if (fragmentCommunicationListener != null) {
             fragmentCommunicationListener.onDataPassed(versionModel);
         }
     }
 
+    /**
+     * This method is used to initialize the FragmentCommunicationListener
+     */
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
