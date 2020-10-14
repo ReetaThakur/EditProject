@@ -1,5 +1,6 @@
 package com.xyz.broadcastreceivers.activities;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 listening to this broadcast who action matches ("com.lloyd.broadcast") then the callback
                 is received in that app if the app is in background (not killed).
                  */
-                sendBroadcast(i);
+                sendBroadcast(i, Manifest.permission.ACCESS_NETWORK_STATE);
 
                 break;
             case R.id.btnLocalBroadcast:
