@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.xyz.receivebroadcast.R;
 
+/**
+ * @author Lloyd Dcosta
+ * This activity is launched when an broadcast is sent from broadcast app
+ */
 public class LaunchOnBroadCastActivity extends AppCompatActivity {
 
     private TextView mTvData;

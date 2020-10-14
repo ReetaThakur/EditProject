@@ -22,12 +22,18 @@ public class MainActivity extends AppCompatActivity {
         registerBroadCastWithPermission();
     }
 
+    /**
+     * This method is used to register the BroadcastReceiver which is used to receive broadcast with permissions
+     */
     private void registerBroadCastWithPermission() {
         IntentFilter intentFilter = new IntentFilter("com.lloyd.broadcast.withPermission");
         broadCastReceiverWithPermission = new BroadCastReceiverWithPermission();
         registerReceiver(broadCastReceiverWithPermission, intentFilter, Manifest.permission.ACCESS_NETWORK_STATE, null);
     }
 
+    /**
+     * This method is used to register the BroadcastReceiver which is used to receive broadcast without permissions
+     */
     private void registerBroadCastWithoutPermission() {
         IntentFilter intentFilter = new IntentFilter("com.lloyd.broadcast");
         broadCastReceiverWithoutPermission = new BroadCastReceiverWithoutPermission();

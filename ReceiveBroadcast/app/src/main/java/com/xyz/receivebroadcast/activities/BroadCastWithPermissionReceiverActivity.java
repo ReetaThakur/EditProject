@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.xyz.receivebroadcast.R;
 
+/**
+ * @author Lloyd Dcosta
+ * This activity is opened when a broadcast is sent from the broadcast app with some restricted permissions.
+ */
 public class BroadCastWithPermissionReceiverActivity extends AppCompatActivity {
 
     private TextView mTvData;
