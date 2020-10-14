@@ -1,9 +1,11 @@
-package com.xyz.receivebroadcast;
+package com.xyz.receivebroadcast.activities;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.xyz.receivebroadcast.R;
 
 public class LaunchOnBroadCastActivity extends AppCompatActivity {
 
