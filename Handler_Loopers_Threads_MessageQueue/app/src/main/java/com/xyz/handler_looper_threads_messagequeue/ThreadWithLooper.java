@@ -4,8 +4,12 @@ import android.os.Handler;
 import android.os.HandlerThread;
 
 public class ThreadWithLooper extends HandlerThread {
-    public Handler mHandler;
 
+    private Handler mHandler;
+
+    /*
+    This name will be the thread name
+     */
     public ThreadWithLooper(String name) {
         super(name);
     }
@@ -17,6 +21,9 @@ public class ThreadWithLooper extends HandlerThread {
     }
 
     public void addTaskToQueue(Runnable task) {
+        /*
+        Handler.post will add the messages to message queue associated with this thread
+         */
         mHandler.post(task);
     }
 }

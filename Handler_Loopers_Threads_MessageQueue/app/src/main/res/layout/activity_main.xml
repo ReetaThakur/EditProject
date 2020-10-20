@@ -11,36 +11,36 @@
         android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start thread Without Looper" />
+        android:text="Start thread" />
 
     <Button
-        android:id="@+id/btnStartThreadWithLooper"
+        android:id="@+id/btnStartHandlerThread"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start thread With Looper" />
+        android:text="Start Handler Thread" />
 
     <Button
         android:id="@+id/btnStop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stop Thread Without Looper" />
+        android:text="Stop Thread" />
 
     <Button
-        android:id="@+id/btnStopThreadWithLooper"
+        android:id="@+id/btnStopHandlerThread"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stop Thread With Looper" />
+        android:text="Stop Handler Thread" />
 
     <Button
         android:id="@+id/btnTaskOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Task to Thread Without Looper Queue" />
+        android:text="Add Task to Thread" />
 
     <Button
         android:id="@+id/btnTaskTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Task to Thread With Looper Queue" />
+        android:text="Add Task to Handler Thread" />
 
 </LinearLayout>

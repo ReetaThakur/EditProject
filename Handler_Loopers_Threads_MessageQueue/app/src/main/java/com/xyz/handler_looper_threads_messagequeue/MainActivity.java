@@ -8,6 +8,11 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * @author Lloyd Dcosta
+ * This activity is used to start 2 threads and add the task to both the task and perform the operations
+ * parallely
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -17,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mBtnTaskTwo;
     private Button mBtnHandlerThread;
     private Button mBtnStopHandlerThread;
-    private LooperThread looperThread;
+    private BackGroundTask looperThread;
     private ThreadWithLooper threadWithLooper;
 
     @Override
@@ -32,16 +37,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnStop = findViewById(R.id.btnStop);
         mBtnTaskOne = findViewById(R.id.btnTaskOne);
         mBtnTaskTwo = findViewById(R.id.btnTaskTwo);
-        mBtnHandlerThread = findViewById(R.id.btnStartThreadWithLooper);
-        mBtnStopHandlerThread = findViewById(R.id.btnStopThreadWithLooper);
+        mBtnHandlerThread = findViewById(R.id.btnStartHandlerThread);
+        mBtnStopHandlerThread = findViewById(R.id.btnStopHandlerThread);
         mBtnStart.setOnClickListener(this);
         mBtnStop.setOnClickListener(this);
         mBtnTaskOne.setOnClickListener(this);
         mBtnTaskTwo.setOnClickListener(this);
-        looperThread = new LooperThread();
-        threadWithLooper = new ThreadWithLooper("Lloyd");
+        looperThread = new BackGroundTask();
         mBtnHandlerThread.setOnClickListener(this);
         mBtnStopHandlerThread.setOnClickListener(this);
+        threadWithLooper = new ThreadWithLooper("Lloyd Thread");
     }
 
     @Override
@@ -54,11 +59,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnStop:
                 looperThread.looper.quit();
                 break;
-            case R.id.btnStartThreadWithLooper:
+            case R.id.btnStartHandlerThread:
                 threadWithLooper.start();
                 break;
-            case R.id.btnStopThreadWithLooper:
-                threadWithLooper.getLooper().quit();
+            case R.id.btnStopHandlerThread:
                 break;
             case R.id.btnTaskOne:
                 looperThread.addTaskToQueue(addTaskToQueue());
