@@ -38,7 +38,7 @@ public class DownloadFileService extends Service implements HandlerReadyListener
         super.onCreate();
         Log.d("Lloyd", "onCreate");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            startMyOwnForeground();
+            showNotificationAndStartForeGround();
         } else {
             startForeground(1, new Notification());
         }
@@ -52,7 +52,7 @@ public class DownloadFileService extends Service implements HandlerReadyListener
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private void startMyOwnForeground() {
+    private void showNotificationAndStartForeGround() {
         String NOTIFICATION_CHANNEL_ID = "lloyd";
         String channelName = "Background Service";
         NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
@@ -65,6 +65,7 @@ public class DownloadFileService extends Service implements HandlerReadyListener
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
         Notification notification = notificationBuilder.setOngoing(true)
                 .setContentTitle("App is running in background")
+                .setContentText("Hey music is playing")
                 .setPriority(NotificationManager.IMPORTANCE_MIN)
                 .setCategory(Notification.CATEGORY_SERVICE)
                 .build();
