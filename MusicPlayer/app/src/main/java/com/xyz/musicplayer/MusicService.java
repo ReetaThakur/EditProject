@@ -74,6 +74,7 @@ public class MusicService extends Service implements LooperPreparedListener {
     public void onDestroy() {
         super.onDestroy();
         Log.d("Lloyd", "onDestroy of music service");
+        handlerThread.getLooper().quit();
 
     }
 
