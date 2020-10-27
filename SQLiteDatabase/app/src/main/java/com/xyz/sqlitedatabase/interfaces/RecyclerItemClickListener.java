@@ -1,4 +1,6 @@
-package com.xyz.sqlitedatabase;
+package com.xyz.sqlitedatabase.interfaces;
+
+import com.xyz.sqlitedatabase.model.Student;
 
 public interface RecyclerItemClickListener {
 

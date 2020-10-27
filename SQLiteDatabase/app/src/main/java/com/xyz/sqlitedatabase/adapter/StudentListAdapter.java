@@ -8,9 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xyz.sqlitedatabase.R;
-import com.xyz.sqlitedatabase.RecyclerItemClickListener;
-import com.xyz.sqlitedatabase.Student;
-import com.xyz.sqlitedatabase.StudentListViewHolder;
+import com.xyz.sqlitedatabase.interfaces.RecyclerItemClickListener;
+import com.xyz.sqlitedatabase.model.Student;
+import com.xyz.sqlitedatabase.viewholder.StudentListViewHolder;
 
 import java.util.List;
 

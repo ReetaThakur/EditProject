@@ -1,12 +1,13 @@
-package com.xyz.sqlitedatabase;
+package com.xyz.sqlitedatabase.database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.xyz.sqlitedatabase.model.Student;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class DBManager {

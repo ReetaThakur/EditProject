@@ -8,9 +8,9 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.xyz.sqlitedatabase.DBManager;
+import com.xyz.sqlitedatabase.database.DBManager;
 import com.xyz.sqlitedatabase.R;
-import com.xyz.sqlitedatabase.Student;
+import com.xyz.sqlitedatabase.model.Student;
 
 import java.io.Serializable;
 import java.util.List;

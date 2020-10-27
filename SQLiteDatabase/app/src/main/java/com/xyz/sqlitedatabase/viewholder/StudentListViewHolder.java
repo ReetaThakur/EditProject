@@ -1,4 +1,4 @@
-package com.xyz.sqlitedatabase;
+package com.xyz.sqlitedatabase.viewholder;
 
 import android.view.View;
 import android.widget.TextView;
@@ -6,6 +6,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.xyz.sqlitedatabase.R;
+import com.xyz.sqlitedatabase.model.Student;
+import com.xyz.sqlitedatabase.interfaces.RecyclerItemClickListener;
 
 public class StudentListViewHolder extends RecyclerView.ViewHolder {
 

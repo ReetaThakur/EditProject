@@ -1,4 +1,4 @@
-package com.xyz.sqlitedatabase;
+package com.xyz.sqlitedatabase.model;
 
 import java.io.Serializable;
 
