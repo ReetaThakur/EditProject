@@ -8,13 +8,17 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.xyz.sqlitedatabase.database.DBManager;
 import com.xyz.sqlitedatabase.R;
+import com.xyz.sqlitedatabase.database.DBManager;
 import com.xyz.sqlitedatabase.model.Student;
 
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @author Lloyd Dcosta
+ * This Activity is used to enter the student details and save it to the database.
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private DBManager dbManager;
@@ -29,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initViewsAndListeners();
         dbManager = DBManager.getInstance(this);
-        dbManager.open();
     }
 
     private void initViewsAndListeners() {
@@ -70,6 +73,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
+    /**
+     * Insert the data to the database in the background thread
+     *
+     * @return return a runnable to start a thread
+     */
     private Runnable insertTaskToDB() {
         return new Runnable() {
             @Override
@@ -79,6 +87,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         };
     }
 
+    /**
+     * Fetches the data from the database and pass the List of students fetched from Database
+     * to the StudentListActivity
+     *
+     * @return return a runnable to start a thread
+     */
     private Runnable fetchFromDB() {
         return new Runnable() {
             @Override
@@ -88,6 +102,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        /*
+                        Start a new Activity and pass the data and populate it in a recycler view
+                         */
                         Intent intent = new Intent(MainActivity.this, StudentListActivity.class);
                         intent.putExtra("studentList", (Serializable) studentList);
                         startActivity(intent);
@@ -95,5 +112,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 });
             }
         };
+    }
+
+    /**
+     * Close the Database once the app is killed
+     */
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dbManager.close();
     }
 }

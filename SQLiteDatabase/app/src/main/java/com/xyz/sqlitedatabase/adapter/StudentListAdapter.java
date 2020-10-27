@@ -40,4 +40,9 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListViewHold
     public int getItemCount() {
         return studentList.size();
     }
+
+    public void updateData(List<Student> studentList) {
+        this.studentList = studentList;
+        notifyDataSetChanged();
+    }
 }

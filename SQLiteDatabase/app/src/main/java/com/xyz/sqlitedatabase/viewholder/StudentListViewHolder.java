@@ -1,22 +1,23 @@
 package com.xyz.sqlitedatabase.viewholder;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xyz.sqlitedatabase.R;
-import com.xyz.sqlitedatabase.model.Student;
 import com.xyz.sqlitedatabase.interfaces.RecyclerItemClickListener;
+import com.xyz.sqlitedatabase.model.Student;
 
 public class StudentListViewHolder extends RecyclerView.ViewHolder {
 
     private RecyclerItemClickListener listener;
     private TextView mTvName;
     private TextView mTvAddress;
-    private CardView mCardView;
+    private ImageView mIvEdit;
+    private ImageView mIvDelete;
 
     public StudentListViewHolder(@NonNull View itemView, RecyclerItemClickListener listener) {
         super(itemView);
@@ -27,18 +28,25 @@ public class StudentListViewHolder extends RecyclerView.ViewHolder {
     private void initViews(View itemView) {
         mTvName = itemView.findViewById(R.id.tvName);
         mTvAddress = itemView.findViewById(R.id.tvAddress);
-        mCardView = itemView.findViewById(R.id.cardView);
-
+        mIvEdit = itemView.findViewById(R.id.ivEdit);
+        mIvDelete = itemView.findViewById(R.id.ivDelete);
     }
 
     public void setData(final Student student) {
         mTvAddress.setText(student.getAddress());
         mTvName.setText(student.getName());
 
-        mCardView.setOnClickListener(new View.OnClickListener() {
+        mIvEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onItemClicked(getAdapterPosition(), student);
+                listener.onEditDataClicked(getAdapterPosition(), student);
+            }
+        });
+
+        mIvDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onDeleteClicked(getAdapterPosition(), student);
             }
         });
     }
