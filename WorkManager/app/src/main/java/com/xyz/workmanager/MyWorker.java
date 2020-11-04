@@ -9,8 +9,11 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
+import androidx.work.Data;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
+
+import com.google.gson.Gson;
 
 public class MyWorker extends Worker {
     public MyWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
@@ -21,14 +24,19 @@ public class MyWorker extends Worker {
     @Override
     public Result doWork() {
         Log.d("Lloyd", Thread.currentThread().getName());
-        Log.d("Lloyd","Data from activity " + getInputData().getString("key"));
-        for (int i=0; i<10;i++){
+
+        if (getInputData().getString("key") != null) {
+            Model model = new Gson().fromJson(getInputData().getString("key"),Model.class);
+            Log.d("Lloyd", "Data from activity " + model.getmData());
+        }
+        for (int i = 0; i < 10; i++) {
             SystemClock.sleep(1000);
-            Log.d("Lloyd", "" +i);
+            Log.d("Lloyd", "" + i);
 
         }
         displayNotification("Hey I am your work", "Work Done");
-        return Result.success();
+        Data data = new Data.Builder().putString("key", "Done ").build();
+        return Result.success(data);
     }
 
     private void displayNotification(String task, String desc) {
