@@ -1,9 +1,11 @@
 package com.xyz.basketballscore
+
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
+
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var scoreViewModel: ScoreViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,10 +15,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         scoreViewModel = ViewModelProvider(this).get(ScoreViewModel::class.java)
         getInitialScoresAndUpdate()
     }
+
     private fun getInitialScoresAndUpdate() {
         tvPhoenixScore.text = scoreViewModel.getPhoenixScore().toString()
         tvTrojansScore.text = scoreViewModel.getTrojansScore().toString()
     }
+
     private fun initViewsAndListeners() {
         btnTrojansThreePoints.setOnClickListener(this)
         btnTrojansTwoPoints.setOnClickListener(this)
@@ -24,6 +28,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         btnPhoenixTwoPoints.setOnClickListener(this)
         btnResetScore.setOnClickListener(this)
     }
+
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btnTrojansThreePoints -> {
