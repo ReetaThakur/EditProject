@@ -6,16 +6,26 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * @author Lloyd Dcosta
+ * This Activity is used to update the score of 2 teams playing basket ball
+ */
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var scoreViewModel: ScoreViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initViewsAndListeners()
+        /*
+        Intialize the view model here
+         */
         scoreViewModel = ViewModelProvider(this).get(ScoreViewModel::class.java)
         getInitialScoresAndUpdate()
     }
 
+    /**
+     * This method is used to get the initial scores of 2 teams and set the score to the text views
+     */
     private fun getInitialScoresAndUpdate() {
         tvPhoenixScore.text = scoreViewModel.getPhoenixScore().toString()
         tvTrojansScore.text = scoreViewModel.getTrojansScore().toString()
