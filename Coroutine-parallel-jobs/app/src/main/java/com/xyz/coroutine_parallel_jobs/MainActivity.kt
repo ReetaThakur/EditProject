@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
-import kotlin.system.measureTimeMillis
 
 /**
  * This activity the use of coroutines to run multiple tasks in parallel
@@ -28,21 +27,19 @@ class MainActivity : AppCompatActivity() {
         val startTime = System.currentTimeMillis()
         val parentJob = CoroutineScope(IO).launch {
 
-            val job1 = launch {
-                val time1 = measureTimeMillis {
-                    val result = callFirstAPI()
-                    setTextOnMainThread(result)
-                }
-                println("Execution time for task1 is $time1 ")
+            val job1 = async {
+                return@async callFirstAPI()
             }
 
-            val job2 = launch {
-                val time2 = measureTimeMillis {
-                    val result = callSecondAPI()
-                    setTextOnMainThread(result)
-                }
-                println("Execution time for  task2 is $time2 ")
+            val job2 = async {
+                callSecondAPI()
             }
+
+            /*
+            Both the jobs run in parallel but until you call await() it won't display the result
+             */
+            setTextOnMainThread(job1.await())
+            setTextOnMainThread(job2.await())
         }
 
         parentJob.invokeOnCompletion {
