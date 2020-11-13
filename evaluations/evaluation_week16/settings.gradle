@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "Evaluations_week16"
