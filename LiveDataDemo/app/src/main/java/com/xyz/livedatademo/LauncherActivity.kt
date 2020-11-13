@@ -17,6 +17,7 @@ class LauncherActivity : AppCompatActivity(), View.OnClickListener {
     private fun initListeners() {
         btnMutableLiveDataDemo.setOnClickListener(this)
         btnLiveDataTransformDemo.setOnClickListener(this)
+        btnMediatorLiveData.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -27,7 +28,13 @@ class LauncherActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.btnLiveDataTransformDemo -> {
-                val intent = Intent(this@LauncherActivity,MutableTransformLiveDataActivity::class.java)
+                val intent =
+                    Intent(this@LauncherActivity, MutableTransformLiveDataActivity::class.java)
+                startActivity(intent)
+            }
+
+            R.id.btnMediatorLiveData -> {
+                val intent = Intent(this@LauncherActivity, MediatorLiveDataActivity::class.java)
                 startActivity(intent)
             }
         }
