@@ -1,7 +1,9 @@
-package com.xyz.roomwithlivedataandcoroutines
+package com.xyz.roomwithlivedataandcoroutines.viewholder
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.xyz.roomwithlivedataandcoroutines.database.User
+import com.xyz.roomwithlivedataandcoroutines.interfaces.RecyclerClickListener
 import kotlinx.android.synthetic.main.item_layout.view.*
 
 class UserListViewHolder(

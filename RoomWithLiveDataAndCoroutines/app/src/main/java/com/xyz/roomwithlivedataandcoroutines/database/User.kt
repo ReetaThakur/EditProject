@@ -1,4 +1,4 @@
-package com.xyz.roomwithlivedataandcoroutines
+package com.xyz.roomwithlivedataandcoroutines.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

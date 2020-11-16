@@ -1,4 +1,6 @@
-package com.xyz.roomwithlivedataandcoroutines
+package com.xyz.roomwithlivedataandcoroutines.interfaces
+
+import com.xyz.roomwithlivedataandcoroutines.database.User
 
 interface RecyclerClickListener {
 

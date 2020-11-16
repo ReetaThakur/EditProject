@@ -1,8 +1,12 @@
-package com.xyz.roomwithlivedataandcoroutines
+package com.xyz.roomwithlivedataandcoroutines.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.xyz.roomwithlivedataandcoroutines.R
+import com.xyz.roomwithlivedataandcoroutines.viewholder.UserListViewHolder
+import com.xyz.roomwithlivedataandcoroutines.database.User
+import com.xyz.roomwithlivedataandcoroutines.interfaces.RecyclerClickListener
 
 class UserListAdapter(
     private var usersList: List<User>,
