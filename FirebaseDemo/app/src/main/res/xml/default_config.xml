@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+    <entry>
+        <key>hello_msg</key>
+        <value>Hello Masai Config</value>
+    </entry>
+
+    <entry>
+        <key>test_json</key>
+        <value>
+            [
+            {
+            "id": "tj_001",
+            "name": "Arbeena"
+            },
+            {
+            "id": "tj_002",
+            "name": "Abhinav"
+            },
+            {
+            "id": "tj_003",
+            "name": "Gourav"
+            }
+            ]
+        </value>
+    </entry>
+
+    <entry>
+        <key>image_prateek</key>
+        <value>
+            https://firebasestorage.googleapis.com/v0/b/fir-demo-1315b.appspot.com/o/prateek_sukla.jpg?alt=media
+            &amp;token=c1ff4fdb-fefd-4e93-846d-8476277be043
+        </value>
+    </entry>
+
+</defaultsMap>
