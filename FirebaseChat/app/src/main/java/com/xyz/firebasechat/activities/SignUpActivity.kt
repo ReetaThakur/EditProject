@@ -3,6 +3,7 @@ package com.xyz.firebasechat.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -63,6 +64,8 @@ class SignUpActivity : AppCompatActivity() {
         databaseReference =
             FirebaseDatabase.getInstance().getReference("Users").child(userId)
         val user = User(auth.currentUser?.email!!, userId)
+
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
         //Adds the user to the database
         databaseReference.setValue(user).addOnCompleteListener {
             updateUI()
@@ -79,6 +82,7 @@ class SignUpActivity : AppCompatActivity() {
         if (currentUser != null) {
             updateUI()
         }
+
     }
 
     /**
