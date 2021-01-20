@@ -1,0 +1,84 @@
+{
+  "formulas": [
+    {
+      "formulae": "Linear Motion",
+      "url": "qp1"
+    },
+    {
+      "formulae": "Constant Acceleration Motion",
+      "url": "qp2"
+    },
+    {
+      "formulae": "Projectile Motion",
+      "url": "qp3"
+    },
+    {
+      "formulae": "Force",
+      "url": "qp4"
+    },
+    {
+      "formulae": "Work, Power, Energy",
+      "url": "qp5"
+    },
+    {
+      "formulae": "Rotary Motion",
+      "url": "qp6"
+    },
+    {
+      "formulae": "Harmonic Motion",
+      "url": "qp7"
+    },
+    {
+      "formulae": "Gravity",
+      "url": "qp8"
+    },
+    {
+      "formulae": "Lateral and Longitudinal Waves",
+      "url": "qp9"
+    },
+    {
+      "formulae": "Sound Waves",
+      "url": "qp10"
+    },
+    {
+      "formulae": "Electrostatics",
+      "url": "qp11"
+    },
+    {
+      "formulae": "Direct Current",
+      "url": "qp12"
+    },
+    {
+      "formulae": "Magnetic Field",
+      "url": "qp13"
+    },
+    {
+      "formulae": "Alternating Current",
+      "url": "qp14"
+    },
+    {
+      "formulae": "Thermodynamics",
+      "url": "qp15"
+    },
+    {
+      "formulae": "Hydrogen Atom",
+      "url": "qp16"
+    },
+    {
+      "formulae": "Optics",
+      "url": "qp17"
+    },
+    {
+      "formulae": "Modern Physics",
+      "url": "qp18"
+    },
+    {
+      "formulae": "Hydrostatics",
+      "url": "qp19"
+    },
+    {
+      "formulae": "Astronomy",
+      "url": "qp20"
+    }
+  ]
+}
