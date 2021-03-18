@@ -7,7 +7,7 @@ import androidx.room.*
 interface TaskDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addNewTask(taskEntity: TaskEntity)
+    fun addNewTask(taskEntity: TaskEntity)
 
     @Query("select id, tile, `desc` from tasks ")
     fun getTasks(): LiveData<List<TaskEntity>>
