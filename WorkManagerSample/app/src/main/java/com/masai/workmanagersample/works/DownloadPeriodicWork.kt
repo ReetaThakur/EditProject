@@ -22,7 +22,7 @@ import okhttp3.ResponseBody
 import java.io.*
 
 
-class DownloadFileOnetimeWork(val appContext: Context, val workerParams: WorkerParameters) :
+class DownloadPeriodicWork(val appContext: Context, val workerParams: WorkerParameters) :
     Worker(appContext, workerParams) {
 
     private var totalFileSize = 0
@@ -30,6 +30,9 @@ class DownloadFileOnetimeWork(val appContext: Context, val workerParams: WorkerP
     override fun doWork(): Result {
 
         CoroutineScope(Dispatchers.IO).launch {
+
+            val data = inputData.getString("name")
+
             Log.d("doWork", "DownloadFileOnetimeWork")
             dislayNotification("OneTimework", "Downloading File")
             initDownload()
@@ -37,8 +40,7 @@ class DownloadFileOnetimeWork(val appContext: Context, val workerParams: WorkerP
         }
 
         val output = Data.Builder()
-        output.putString("key", "vale")
-
+        output.putString("key", "Completed")
         return Result.success(output.build())
     }
 
