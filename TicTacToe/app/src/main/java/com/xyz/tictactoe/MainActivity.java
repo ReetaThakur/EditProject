@@ -238,9 +238,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void resetGame() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
+        recreate();
+
     }
 
 }
