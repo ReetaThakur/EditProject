@@ -49,7 +49,9 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         /*
         Set the data to fragmentB received from FragmentA via the listener
          */
+
         fragmentB.setArguments(bundle);
+
         getSupportFragmentManager().beginTransaction().replace(R.id.flContainer, fragmentB, "FragmentB").addToBackStack("FragmentB").commit();
     }
 }

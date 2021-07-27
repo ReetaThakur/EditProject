@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnOne, btnTwo, btnThree, btnFour, btnFive, btnSix, btnSeven,
             btnEight, btnNine, btnReset;
-
+    private TextView playerTurnText;
     private int turn = 1;
     private int draw = 0;
     private boolean isEnded = false;
@@ -36,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
         btnEight = findViewById(R.id.btnEight);
         btnNine = findViewById(R.id.btnNine);
         btnReset = findViewById(R.id.btnReset);
+        playerTurnText = findViewById(R.id.playerText);
+
+        setPlayerText("Player X Turn");
+    }
+
+    private void setPlayerText(String playerTurn) {
+        playerTurnText.setText(playerTurn);
     }
 
     private void handleClicks() {
@@ -116,9 +124,11 @@ public class MainActivity extends AppCompatActivity {
             if (turn == 1) {
                 button.setText("X");
                 turn = 2;
+                setPlayerText("Player O Turn");
             } else if (turn == 2) {
                 button.setText("O");
                 turn = 1;
+                setPlayerText("Player X Turn");
             }
             draw = draw + 1;
 
@@ -141,80 +151,96 @@ public class MainActivity extends AppCompatActivity {
 
         if (box1.equals("X") && box2.equals("X") && box3.equals("X")) {
             Toast.makeText(this, "Player X won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player X won");
             isEnded = true;
         }
 
         if (box4.equals("X") && box5.equals("X") && box6.equals("X")) {
             Toast.makeText(this, "Player X won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player X won");
             isEnded = true;
 
         }
         if (box7.equals("X") && box8.equals("X") && box9.equals("X")) {
             Toast.makeText(this, "Player X won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player X won");
             isEnded = true;
         }
 
         if(box1.equals("X") && box4.equals("X") && box7.equals("X")){
             Toast.makeText(this, "Player X won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player X won");
             isEnded = true;
         }
 
         if(box2.equals("X") && box5.equals("X") && box8.equals("X")){
             Toast.makeText(this, "Player X won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player X won");
             isEnded = true;
         }
         if(box3.equals("X") && box6.equals("X") && box9.equals("X")){
             Toast.makeText(this, "Player X won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player X won");
             isEnded = true;
         }
 
         if(box1.equals("X") && box5.equals("X") && box9.equals("X")){
             Toast.makeText(this, "Player X won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player X won");
             isEnded = true;
         }
 
         if(box3.equals("X") && box5.equals("X") && box7.equals("X")){
             Toast.makeText(this, "Player X won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player X won");
             isEnded = true;
         }
 
 
         if (box1.equals("O") && box2.equals("O") && box3.equals("O")) {
             Toast.makeText(this, "Player O won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player O won");
             isEnded = true;
         }
 
         if (box4.equals("O") && box5.equals("O") && box6.equals("O")) {
             Toast.makeText(this, "Player O won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player O won");
             isEnded = true;
 
         }
         if (box7.equals("O") && box8.equals("O") && box9.equals("O")) {
             Toast.makeText(this, "Player O won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player O won");
             isEnded = true;
         }
 
         if(box1.equals("O") && box4.equals("O") && box7.equals("O")){
             Toast.makeText(this, "Player O won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player O won");
             isEnded = true;
         }
 
         if(box2.equals("O") && box5.equals("O") && box8.equals("O")){
             Toast.makeText(this, "Player O won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player O won");
             isEnded = true;
         }
         if(box3.equals("O") && box6.equals("O") && box9.equals("O")){
             Toast.makeText(this, "Player O won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player O won");
             isEnded = true;
         }
 
         if(box1.equals("O") && box5.equals("O") && box9.equals("O")){
             Toast.makeText(this, "Player O won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player O won");
             isEnded = true;
         }
 
         if(box3.equals("O") && box5.equals("O") && box7.equals("O")){
             Toast.makeText(this, "Player O won", Toast.LENGTH_SHORT).show();
+            setPlayerText("Player O won");
             isEnded = true;
         }
 
@@ -229,18 +255,18 @@ public class MainActivity extends AppCompatActivity {
             btnEight.setEnabled(false);
             btnNine.setEnabled(false);
             btnReset.setText("Play Again");
+
         }
 
         if(draw == 9 && !isEnded){
             Toast.makeText(this,"Drawed", Toast.LENGTH_SHORT).show();
-            btnReset.setText("Play Again");
+            btnReset.setText("Draw");
         }
     }
 
     private void resetGame() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
+        recreate();
+
     }
 
 }
