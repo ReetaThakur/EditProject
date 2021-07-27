@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.InputStream;
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mIvGallery;
     private Button mBtnOpenGallery;
     private Button mBtnUploadImage;
-    private Uri uri = null;
+    private String imagePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
         mBtnUploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (uri == null) return;
-                uploadImage(new File(uri.getPath()));
+                uploadImage();
             }
         });
     }
@@ -88,7 +90,8 @@ public class MainActivity extends AppCompatActivity {
             try {
                 InputStream imageStream = getContentResolver().openInputStream(selectedImage);
                 mIvGallery.setImageBitmap(BitmapFactory.decodeStream(imageStream));
-                uri = selectedImage;
+                Cursor c = getImagePathFromUri(selectedImage);
+                c.close();
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -97,15 +100,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void uploadImage(File file) {
+    @NotNull
+    private Cursor getImagePathFromUri(Uri selectedImage) {
+        String[] filePath = {MediaStore.Images.Media.DATA};
+        Cursor c = getContentResolver().query(selectedImage, filePath,
+                null, null, null);
+        c.moveToFirst();
+        int columnIndex = c.getColumnIndex(filePath[0]);
+        imagePath = c.getString(columnIndex);
+        return c;
+    }
+
+    private void uploadImage() {
         ApiService apiService = Network.getInstance().create(ApiService.class);
-        RequestBody imageBody = RequestBody.create(MediaType.parse("image/*"), file);
-        MultipartBody.Part multipartBody = MultipartBody.Part.createFormData("image", "sad", imageBody);
-        apiService.uploadImage(multipartBody,"siddharth hulk").enqueue(
+        File file = new File(imagePath);
+        RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), file);
+        MultipartBody.Part multipartBody = MultipartBody.Part.createFormData("image", file.getName(), reqFile);
+        apiService.uploadImage(multipartBody, "siddharth hulk").enqueue(
                 new Callback<ResponseDTO>() {
                     @Override
                     public void onResponse(Call<ResponseDTO> call, Response<ResponseDTO> response) {
-
+                        Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
