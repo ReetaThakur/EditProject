@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            String progress = (String) msg.obj;
-            circularProgressIndicator.setProgress(Integer.parseInt(progress));
+            int progress = (int) msg.obj;
+            circularProgressIndicator.setProgress(progress);
         }
     };
 

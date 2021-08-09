@@ -18,10 +18,10 @@ public class Task extends HandlerThread {
     protected void onLooperPrepared() {
         super.onLooperPrepared();
         int progress = 0;
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 10; i++) {
             try {
                 Thread.sleep(2000);
-                progress = progress + 20;
+                progress = progress + 10;
                 message = Message.obtain();
                 message.obj = progress;
                 mainThreadHandler.sendMessage(message);
